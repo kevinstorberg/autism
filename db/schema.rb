@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327234743) do
+ActiveRecord::Schema.define(version: 20170328104205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20170327234743) do
   end
 
   create_table "user_relationships", force: :cascade do |t|
-    t.integer  "relationshipor_id"
-    t.integer  "relationshipee_id"
+    t.integer  "owner_id"
+    t.integer  "user_id"
     t.string   "relationship_type"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
