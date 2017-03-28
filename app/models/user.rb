@@ -8,4 +8,7 @@ class User < ApplicationRecord
          :rememberable,
          :trackable,
          :validatable
+
+  has_many :relationshipees, foreign_key: "relationshipor_id", class_name: "UserRelationship"
+  belongs_to :relationshipors, foreign_key: "relationshipee_id", class_name: "UserRelationship"
 end
