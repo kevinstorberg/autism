@@ -12,8 +12,6 @@ class User < ApplicationRecord
   has_many :user_relationships, foreign_key: :owner_id
   has_many :users, through: :user_relationships
 
-  # belongs_to :users, through: :user_relationships
-
   def admin?
     self.role == "admin"
   end
