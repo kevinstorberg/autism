@@ -16,6 +16,19 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  # NOTE: Relationship based methods
+  def family
+    self.users.where(relationship_type: "family")
+  end
+
+  def friends
+    self.users.where(relationship_type: "friend")
+  end
+
+  def professionals
+    self.users.where(relationship_type: "professional")
+  end
+
   def relationships
     self.users
   end
