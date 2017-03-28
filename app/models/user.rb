@@ -17,19 +17,15 @@ class User < ApplicationRecord
   end
 
   # NOTE: Relationship based methods
-  def family
-    self.users.where(relationship_type: "family")
-  end
-
-  def friends
-    self.users.where(relationship_type: "friend")
-  end
-
-  def professionals
-    self.users.where(relationship_type: "professional")
-  end
-
-  def relationships
-    self.users
+  def relationships(type = nil)
+    if type
+      array = []
+      records = self.user_relationships.where(relationship_type: type).joins(:user)
+      records.each do |record|
+        array << record.user
+      end
+    else
+      self.users
+    end
   end
 end
