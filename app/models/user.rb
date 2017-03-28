@@ -12,11 +12,14 @@ class User < ApplicationRecord
   has_many :user_relationships, foreign_key: :owner_id
   has_many :users, through: :user_relationships
 
+  has_many :addresses
+
   def admin?
     self.role == "admin"
   end
 
-  # NOTE: Relationship based methods
+  # NOTE: relationships method returns all users relationships by default
+  # and will return relationships of a particular type when given a string
   def relationships(type = nil)
     if type
       array = []
