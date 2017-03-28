@@ -12,7 +12,8 @@ class User < ApplicationRecord
   has_many :user_relationships, foreign_key: :owner_id
   has_many :users, through: :user_relationships
 
-  has_many :addresses
+  has_many :addresses, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :addressable
 
   def admin?
     self.role == "admin"
